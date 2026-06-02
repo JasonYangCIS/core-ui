@@ -1,0 +1,6 @@
+# Copy this file to `.npmrc` at the root of any repo that installs
+# @jasonyangcis/core-ui. Safe to commit — the token is NOT in this file.
+# npm resolves ${GITHUB_TOKEN} from the environment at install time.
+
+@jasonyangcis:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
