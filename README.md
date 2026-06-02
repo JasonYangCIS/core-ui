@@ -5,7 +5,7 @@ A headless React component library. It ships **structure, behavior, ARIA, and `d
 - **ESM-only**, bundled with [Rolldown](https://rolldown.rs/) using `preserveModules` so each component ships as its own file.
 - **Tree-shakeable** — `"sideEffects": false` plus per-component modules mean unused components are dropped from consumer bundles. A fixture test enforces this.
 - **Builder.io ready** — components can ship an optional Builder registration that stays out of every bundle that doesn't use it.
-- React 18/19, Node ≥ 24.
+- React 19+, Node ≥ 24.
 
 ## Installation
 
@@ -27,7 +27,7 @@ npm install @jasonyangcis/core-ui
 //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
 ```
 
-Peer dependencies: `react >=18`, `react-dom >=18`. `@builder.io/sdk-react >=5` is an **optional** peer — only needed if you use the Builder registrations.
+Peer dependencies: `react >=19`, `react-dom >=19` (the components rely on React 19's ref-as-prop API — there is no `forwardRef` shim). `@builder.io/sdk-react >=5` is an **optional** peer — only needed if you use the Builder registrations.
 
 ## Usage
 
