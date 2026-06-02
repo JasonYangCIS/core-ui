@@ -137,17 +137,38 @@ Run it after touching `rolldown.config.ts`, the `exports` map, the `sideEffects`
 | `lint` / `format` | ESLint / Prettier |
 | `test` / `test:watch` | Vitest |
 | `verify:consumer` | Build + consumer fixture build + treeshake check |
-| `changeset` / `version` / `release` | [Changesets](https://github.com/changesets/changesets) release flow (publishes to GitHub Packages) |
+| `changeset` / `version` / `release` | [Changesets](https://github.com/changesets/changesets) release flow — normally driven by CI, see [Releasing](#releasing) |
 
 ## Releasing
 
-Versioning and publishing run through Changesets:
+Releases run through [Changesets](https://github.com/changesets/changesets) and are **published automatically by CI** — you normally never run `npm publish` or `npm run release` by hand. The `.github/workflows/release.yml` workflow runs `changesets/action` on every push to `main`.
+
+### The normal flow
+
+1. **Add a changeset with your PR.** In your feature branch, run:
+
+   ```bash
+   npm run changeset
+   ```
+
+   Pick the affected package, choose a bump, and write a human-readable summary. Because the package is **pre-1.0**, follow the 0.x convention: breaking changes are a **minor** bump (0.1 → 0.2), everything else is a **patch**. This drops a markdown file in `.changeset/` — commit it alongside your code.
+
+2. **Merge your PR to `main`.** The Release workflow runs. If there are unconsumed changesets, `changesets/action` opens (or updates) a **"Version Packages" PR** that applies `npm run version` — bumping `package.json` and updating `CHANGELOG.md`.
+
+3. **Merge the "Version Packages" PR.** That push to `main` triggers the workflow again; this time there are no pending changesets, so it runs `npm run release` (`npm run build && changeset publish`) and **publishes to GitHub Packages**.
+
+So the only manual steps are: write a changeset, then merge two PRs (yours, then the auto-generated version PR). CI does the build and publish — it authenticates with the workflow's `GITHUB_TOKEN`, which has `packages: write`.
+
+### Doing it locally (not recommended)
+
+The same scripts exist for local use, but since the workflow auto-publishes on push, running them by hand usually just races CI or no-ops:
 
 ```bash
-npm run changeset        # describe the change, pick a semver bump
-npm run version          # apply pending changesets, update CHANGELOG
-npm run release          # build + publish to GitHub Packages
+npm run version          # apply pending changesets, bump version, update CHANGELOG
+npm run release          # build + changeset publish (needs an .npmrc with a write:packages token)
 ```
+
+A local `changeset publish` is a safe no-op if CI already published that version — it prints "version X.Y.Z is already published" and exits 0. To publish locally you need an `.npmrc` mapping `@jasonyangcis` to `https://npm.pkg.github.com` with a token carrying the **`write:packages`** scope (the read-only consumer token in [`CONSUMER_SETUP.md`](./CONSUMER_SETUP.md) is not enough).
 
 ## License
 
