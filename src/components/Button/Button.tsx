@@ -1,14 +1,47 @@
-import type { ButtonHTMLAttributes, ReactNode } from 'react'
+import type { ReactElement, Ref } from 'react'
+import { cloneElement, isValidElement } from 'react'
+import type {
+  ButtonProps,
+  ButtonSize,
+  ButtonVariant,
+} from './Button.types.js'
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary'
-  children?: ReactNode
-}
+export function Button({
+  variant,
+  size,
+  asChild = false,
+  className,
+  children,
+  ref,
+  ...rest
+}: ButtonProps) {
+  const v: ButtonVariant = variant ?? 'default'
+  const s: ButtonSize = size ?? 'default'
+  const dataAttrs = {
+    'data-variant': v,
+    'data-size': s,
+  }
 
-export function Button({ variant = 'primary', children, ...rest }: ButtonProps) {
+  if (asChild) {
+    if (!isValidElement(children)) {
+      throw new Error('Button: `asChild` requires a single React element as children.')
+    }
+    const child = children as ReactElement<{ className?: string; ref?: Ref<unknown> }>
+    const mergedClassName =
+      [child.props.className, className].filter(Boolean).join(' ') || undefined
+    return cloneElement(child, {
+      ...rest,
+      ...dataAttrs,
+      ref,
+      className: mergedClassName,
+    })
+  }
+
   return (
-    <button data-variant={variant} {...rest}>
+    <button ref={ref} className={className} {...dataAttrs} {...rest}>
       {children}
     </button>
   )
 }
+
+export type { ButtonProps, ButtonSize, ButtonVariant } from './Button.types.js'

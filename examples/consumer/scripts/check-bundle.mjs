@@ -15,8 +15,10 @@ const EXPECTED_PRESENT = ['data-variant']
 
 // Strings that MUST NOT appear in the bundle (proves treeshaking dropped them).
 // As you add components that the fixture does NOT import, add a sentinel
-// string from each one here.
-const EXPECTED_ABSENT = []
+// string from each one here. `toggle-square` is the Builder.io insert-menu
+// icon URL in Button.builder.ts — it must never leak into a consumer that
+// only imports Button itself.
+const EXPECTED_ABSENT = ['toggle-square']
 
 const files = await readdir(ASSETS_DIR)
 const jsFiles = files.filter((f) => f.endsWith('.js'))

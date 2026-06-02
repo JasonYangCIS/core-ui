@@ -2,6 +2,28 @@
 
 React component library, ESM-only, bundled with Rolldown using `preserveModules` so each component ships as its own file.
 
+## Headless by design
+
+Components are headless. The library ships structure, behavior, ARIA, and `data-*` attributes — **no CSS, no Tailwind classes, no design tokens**. Variant/size props are surfaced to the DOM as data attributes (`data-variant="outline"`, `data-size="lg"`) so consumer apps style components by writing CSS keyed off those attributes, or by passing a `className` at the call site. This is the Radix/Headless UI pattern; it's what lets multiple consumer apps adopt the same primitives without inheriting one app's visual identity. If you find yourself wanting to add classes inside a component, stop and add a data attribute instead — the styling decision belongs to the consumer.
+
+## Component file structure
+
+Every component lives in its own directory under `src/components/`:
+
+```
+components/MyComponent/
+  index.ts                 # Barrel: named re-exports of the component and its types
+  MyComponent.tsx          # Implementation; re-exports types from the .types file at the bottom
+  MyComponent.types.ts     # Interfaces and prop unions only — no runtime code
+  MyComponent.test.tsx     # Vitest + Testing Library
+  MyComponent.builder.ts   # `RegisteredComponent` config — omit if not Builder-registered
+```
+
+- **Types live in `MyComponent.types.ts`.** Implementation imports them with `import type` (so the file is fully elided at runtime under `verbatimModuleSyntax`), and re-exports them so consumers resolve them through the barrel.
+- **Variant/size props become `data-*` attributes on the rendered element**, never internal class strings. Default values are absorbed at the component boundary (see the `T | null` rule below), so the data attribute always carries a meaningful value the consumer's CSS can target.
+- **Builder-bound optional fields are typed as `T | null`, not `T | undefined`.** Builder serializes unset CMS fields as `null`; absorb it at the component boundary with `prop ?? default` instead of pushing the null through.
+- **`MyComponent.builder.ts` is NOT re-exported from `src/index.ts`.** It's reached via deep import at `core-ui/components/MyComponent/MyComponent.builder`, which is handled automatically by two pieces of infrastructure: the `./components/*` subpath pattern in `package.json` exports, and a `globSync('src/components/*/*.builder.ts')` Rolldown input. Drop a `.builder.ts` into a component directory and both will pick it up — no per-component wiring. This keeps the Builder config (and the `@builder.io/sdk-react` type surface) out of every bundle that doesn't use Builder. Pair each new one with an `EXPECTED_ABSENT` sentinel (see Treeshake invariants below) so a regression can't sneak into the main barrel unnoticed.
+
 ## Treeshake invariants
 
 Consumers depend on dead-code elimination dropping unused components. Three rules keep that working — violate any of them and unused components leak into consumer bundles:

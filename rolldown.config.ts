@@ -1,7 +1,10 @@
+import { globSync } from 'node:fs'
 import { defineConfig } from 'rolldown'
 
+const builderEntries = globSync('src/components/*/*.builder.ts')
+
 export default defineConfig({
-  input: 'src/index.ts',
+  input: ['src/index.ts', ...builderEntries],
   output: {
     dir: 'dist',
     format: 'esm',
@@ -10,7 +13,7 @@ export default defineConfig({
     preserveModulesRoot: 'src',
     entryFileNames: '[name].js',
   },
-  external: [/^react($|\/)/, /^react-dom($|\/)/],
+  external: [/^react($|\/)/, /^react-dom($|\/)/, /^@builder\.io\//],
   jsx: 'react',
   platform: 'neutral',
 })
