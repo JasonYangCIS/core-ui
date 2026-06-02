@@ -9,7 +9,7 @@
     "verify": "npm run build && npm run check"
   },
   "dependencies": {
-    "core-ui": "file:../..",
+    "@jasonyangcis/core-ui": "file:../..",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
