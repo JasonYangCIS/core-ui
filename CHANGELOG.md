@@ -1,5 +1,11 @@
 # @jasonyangcis/core-ui
 
+## 0.3.0
+
+### Minor Changes
+
+- 96575b4: Add headless Badge component (variant surfaced as `data-variant`, marked with `data-slot="badge"`).
+
 ## 0.2.0
 
 ### Minor Changes
