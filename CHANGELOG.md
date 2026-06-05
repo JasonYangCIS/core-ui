@@ -1,5 +1,11 @@
 # @jasonyangcis/core-ui
 
+## 0.4.0
+
+### Minor Changes
+
+- 4f5743a: Add headless `Card` surface primitive. Emits `data-slot="card"`; consumers own all visuals via CSS keyed off that attribute or a `className` at the call site.
+
 ## 0.3.0
 
 ### Minor Changes
