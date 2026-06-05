@@ -50,15 +50,25 @@
   "peerDependencies": {
     "react": ">=19",
     "react-dom": ">=19",
-    "@builder.io/sdk-react": ">=5.0.0"
+    "@builder.io/sdk-react": ">=5.0.0",
+    "@radix-ui/react-dialog": ">=1.1.0",
+    "@radix-ui/react-label": ">=2.1.0"
   },
   "peerDependenciesMeta": {
     "@builder.io/sdk-react": {
+      "optional": true
+    },
+    "@radix-ui/react-dialog": {
+      "optional": true
+    },
+    "@radix-ui/react-label": {
       "optional": true
     }
   },
   "devDependencies": {
     "@builder.io/sdk-react": "^5.2.2",
+    "@radix-ui/react-dialog": "^1.1.6",
+    "@radix-ui/react-label": "^2.1.2",
     "@changesets/cli": "^2.27.10",
     "@eslint/js": "^9.17.0",
     "@testing-library/jest-dom": "^6.6.3",

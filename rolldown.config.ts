@@ -13,7 +13,12 @@ export default defineConfig({
     preserveModulesRoot: 'src',
     entryFileNames: '[name].js',
   },
-  external: [/^react($|\/)/, /^react-dom($|\/)/, /^@builder\.io\//],
+  external: [
+    /^react($|\/)/,
+    /^react-dom($|\/)/,
+    /^@builder\.io\//,
+    /^@radix-ui\//,
+  ],
   jsx: 'react',
   platform: 'neutral',
 })
