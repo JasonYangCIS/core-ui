@@ -6,3 +6,5 @@ export type {
 } from './components/Button/index.js'
 export { Badge } from './components/Badge/index.js'
 export type { BadgeProps, BadgeVariant } from './components/Badge/index.js'
+export { Card } from './components/Card/index.js'
+export type { CardProps } from './components/Card/index.js'
