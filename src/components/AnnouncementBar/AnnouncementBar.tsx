@@ -6,9 +6,9 @@ export function AnnouncementBar({ message, href, className, ref, ...rest }: Anno
 
   const glyphs = (
     <>
-      <span data-slot="announcement-bar-glyph">⌁</span>
+      <span data-slot="announcement-bar-glyph" aria-hidden="true">⌁</span>
       <span data-slot="announcement-bar-message">{message}</span>
-      <span data-slot="announcement-bar-glyph">⌁</span>
+      <span data-slot="announcement-bar-glyph" aria-hidden="true">⌁</span>
     </>
   )
 

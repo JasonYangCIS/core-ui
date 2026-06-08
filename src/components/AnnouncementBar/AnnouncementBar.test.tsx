@@ -55,6 +55,12 @@ describe('AnnouncementBar', () => {
     expect(glyphs).toHaveLength(2)
   })
 
+  it('hides decorative glyphs from assistive technology', () => {
+    render(<AnnouncementBar message="Hello" />)
+    const glyphs = document.querySelectorAll('[data-slot="announcement-bar-glyph"]')
+    glyphs.forEach((g) => expect(g).toHaveAttribute('aria-hidden', 'true'))
+  })
+
   it('renders the message in its own slot', () => {
     render(<AnnouncementBar message="Hello" />)
     expect(document.querySelector('[data-slot="announcement-bar-message"]')).toHaveTextContent('Hello')
