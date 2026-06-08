@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { FaqList } from '@jasonyangcis/core-ui'
+import type { FaqItem } from '@jasonyangcis/core-ui'
 
-const SAMPLE_ITEMS = [
+const SAMPLE_ITEMS: FaqItem[] = [
   {
     question: 'What materials are the artifacts made from?',
     answerHtml: '<p>Each artifact is forged from reclaimed xenolithic compounds sourced across five catalogued sectors. No two pieces share the same substrate.</p>',
@@ -37,7 +38,7 @@ export const NoHeading: Story = {
 
 export const SingleItem: Story = {
   args: {
-    items: [SAMPLE_ITEMS[0]],
+    items: SAMPLE_ITEMS.slice(0, 1),
   },
 }
 
