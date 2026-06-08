@@ -18,13 +18,14 @@ const EXPECTED_PRESENT = ['data-variant']
 // string from each one here. `toggle-square` is the Builder.io insert-menu
 // icon URL in Button.builder.ts — it must never leak into a consumer that
 // only imports Button itself.
-// 'data-slot' is emitted by Badge, Card, Input, Label, and Dialog (Button emits
-// no data-slot), so it must be treeshaken out of a consumer that imports only
-// Button — this single sentinel guards all of them against leaking into a
-// Button-only bundle.
+// 'data-slot' is emitted by Badge, Card, Input, Label, Dialog, and AnnouncementBar
+// (Button emits no data-slot), so it must be treeshaken out of a consumer that
+// imports only Button — this single sentinel guards all of them against leaking
+// into a Button-only bundle.
 // '@radix-ui/' is the import specifier pulled in by Dialog and Label; it must
 // not appear in a Button-only bundle either.
-const EXPECTED_ABSENT = ['toggle-square', 'data-slot', '@radix-ui/']
+// 'announcement-bar-glyph' is the data-slot value unique to AnnouncementBar.
+const EXPECTED_ABSENT = ['toggle-square', 'data-slot', '@radix-ui/', 'announcement-bar-glyph']
 
 const files = await readdir(ASSETS_DIR)
 const jsFiles = files.filter((f) => f.endsWith('.js'))

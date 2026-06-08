@@ -12,6 +12,8 @@ export { Input } from './components/Input/index.js'
 export type { InputProps } from './components/Input/index.js'
 export { Label } from './components/Label/index.js'
 export type { LabelProps } from './components/Label/index.js'
+export { AnnouncementBar } from './components/AnnouncementBar/index.js'
+export type { AnnouncementBarProps } from './components/AnnouncementBar/index.js'
 export {
   Dialog,
   DialogTrigger,
