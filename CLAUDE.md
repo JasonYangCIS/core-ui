@@ -16,7 +16,7 @@ components/MyComponent/
   MyComponent.tsx          # Implementation; re-exports types from the .types file at the bottom
   MyComponent.types.ts     # Interfaces and prop unions only — no runtime code
   MyComponent.test.tsx     # Vitest + Testing Library
-  MyComponent.stories.tsx  # Storybook stories — see Dev surfaces below
+  MyComponent.stories.tsx  # Storybook stories — ALWAYS required, see Dev surfaces below
   MyComponent.builder.ts   # `RegisteredComponent` config — omit if not Builder-registered
 ```
 
@@ -38,6 +38,12 @@ Consumers depend on dead-code elimination dropping unused components. Three rule
 ## Dev surfaces
 
 **Storybook** (`npm run storybook`, build with `build-storybook`) is the canonical way to see components in a browser. It does not ship in the published package (`files: ["dist"]`) and develops against `src/` (not `dist/`) so edits hot-reload. Config lives in `.storybook/`; stories are colocated as `MyComponent.stories.tsx` and import the library by its public name (`@jasonyangcis/core-ui`, aliased to `src/index.ts` in both `.storybook/main.ts`'s `viteFinal` and the `paths` map in `tsconfig.json`). The `@storybook/addon-a11y` panel is the meaningful signal for a headless library — it tests the ARIA you ship. Add a `tags: ['autodocs']` story per new component.
+
+**`MyComponent.stories.tsx` is mandatory for every component — new or updated.** Checklist:
+1. Import from `@jasonyangcis/core-ui` (the aliased barrel), not a relative path.
+2. Set `tags: ['autodocs']` on the meta object.
+3. Export a `Default` story plus stories for each meaningful variant/prop combination and conditional rendering case.
+4. Add demo styles for the component's `data-slot` attributes to `.storybook/preview.css`. The library ships no CSS — without preview styles the Storybook canvas is blank and useless.
 
 Because the library ships no CSS, `.storybook/preview.css` supplies demo styles keyed off the `data-*` attributes — this is the consumer styling pattern, deliberately kept out of the components.
 
