@@ -16,6 +16,7 @@ components/MyComponent/
   MyComponent.tsx          # Implementation; re-exports types from the .types file at the bottom
   MyComponent.types.ts     # Interfaces and prop unions only — no runtime code
   MyComponent.test.tsx     # Vitest + Testing Library
+  MyComponent.stories.tsx  # Storybook stories — see Dev surfaces below
   MyComponent.builder.ts   # `RegisteredComponent` config — omit if not Builder-registered
 ```
 
@@ -33,6 +34,14 @@ Consumers depend on dead-code elimination dropping unused components. Three rule
 2. **Register a sentinel for every new component.** `examples/consumer/scripts/check-bundle.mjs` is the treeshake test: it builds a consumer that imports only `Button` and asserts that strings from other components are absent from the bundle. When you add a component, pick a unique runtime string from it (a class name, `data-*` value, displayed text — anything that survives bundling) and add it to `EXPECTED_ABSENT`. Without the sentinel, the test passes vacuously and a regression ships silently.
 
 3. **Named exports only at the barrel.** `src/index.ts` must only re-export named symbols. Never `export default { Button, ... }` — the object literal is unshakable and forces every component into every consumer bundle.
+
+## Dev surfaces
+
+**Storybook** (`npm run storybook`, build with `build-storybook`) is the canonical way to see components in a browser. It does not ship in the published package (`files: ["dist"]`) and develops against `src/` (not `dist/`) so edits hot-reload. Config lives in `.storybook/`; stories are colocated as `MyComponent.stories.tsx` and import the library by its public name (`@jasonyangcis/core-ui`, aliased to `src/index.ts` in both `.storybook/main.ts`'s `viteFinal` and the `paths` map in `tsconfig.json`). The `@storybook/addon-a11y` panel is the meaningful signal for a headless library — it tests the ARIA you ship. Add a `tags: ['autodocs']` story per new component.
+
+Because the library ships no CSS, `.storybook/preview.css` supplies demo styles keyed off the `data-*` attributes — this is the consumer styling pattern, deliberately kept out of the components.
+
+**Stories must not leak into `dist/`.** Rolldown won't bundle them (its inputs are explicit), but `tsconfig.build.json` emits `.d.ts` for everything under `src/`, so `**/*.stories.ts(x)` is in that file's `exclude` list alongside tests. Keep it there.
 
 ## Source import style
 
