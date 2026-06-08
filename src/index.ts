@@ -14,6 +14,12 @@ export { Label } from './components/Label/index.js'
 export type { LabelProps } from './components/Label/index.js'
 export { AnnouncementBar } from './components/AnnouncementBar/index.js'
 export type { AnnouncementBarProps } from './components/AnnouncementBar/index.js'
+export { FaqList } from './components/FaqList/index.js'
+export type { FaqListProps, FaqItem } from './components/FaqList/index.js'
+export { HeroCentered } from './components/HeroCentered/index.js'
+export type { HeroCenteredProps } from './components/HeroCentered/index.js'
+export { HeroSplit } from './components/HeroSplit/index.js'
+export type { HeroSplitProps } from './components/HeroSplit/index.js'
 export {
   Dialog,
   DialogTrigger,
