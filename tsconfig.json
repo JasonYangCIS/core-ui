@@ -15,6 +15,9 @@
     "isolatedModules": true,
     "verbatimModuleSyntax": true,
     "resolveJsonModule": true,
+    "paths": {
+      "@jasonyangcis/core-ui": ["./src/index.ts"]
+    },
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
