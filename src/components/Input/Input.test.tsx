@@ -36,4 +36,19 @@ describe('Input', () => {
     render(<Input aria-label="field" ref={ref} />)
     expect(ref.current).toBeInstanceOf(HTMLInputElement)
   })
+
+  it('sets data-state attribute when state prop is provided', () => {
+    render(<Input aria-label="field" state="error" />)
+    expect(screen.getByLabelText('field')).toHaveAttribute('data-state', 'error')
+  })
+
+  it('omits data-state attribute when state is not provided', () => {
+    render(<Input aria-label="field" />)
+    expect(screen.getByLabelText('field')).not.toHaveAttribute('data-state')
+  })
+
+  it('omits data-state attribute when state is null', () => {
+    render(<Input aria-label="field" state={null} />)
+    expect(screen.getByLabelText('field')).not.toHaveAttribute('data-state')
+  })
 })

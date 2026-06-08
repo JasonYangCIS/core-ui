@@ -1,9 +1,16 @@
 import type { InputProps } from './Input.types.js'
 
-export function Input({ className, type, ref, ...rest }: InputProps) {
+export function Input({ className, type, ref, state, ...rest }: InputProps) {
   return (
-    <input ref={ref} type={type} className={className} data-slot="input" {...rest} />
+    <input
+      ref={ref}
+      type={type}
+      className={className}
+      data-slot="input"
+      data-state={state ?? undefined}
+      {...rest}
+    />
   )
 }
 
-export type { InputProps } from './Input.types.js'
+export type { InputProps, InputState } from './Input.types.js'

@@ -97,6 +97,18 @@ input {
   padding: 0.5rem 0.75rem;
   font-size: 0.875rem;
 }
+input[data-state='error'] {
+  border-color: #dc2626;
+  outline-color: #dc2626;
+}
+input[data-state='success'] {
+  border-color: #16a34a;
+  outline-color: #16a34a;
+}
+input[data-state='warning'] {
+  border-color: #d97706;
+  outline-color: #d97706;
+}
 
 /* Dialog (Radix) */
 [data-slot='dialog-overlay'] {
