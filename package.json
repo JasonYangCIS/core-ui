@@ -36,6 +36,8 @@
   "scripts": {
     "build": "rolldown -c && tsc -p tsconfig.build.json",
     "dev": "rolldown -c -w",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "format": "prettier --write .",
@@ -48,11 +50,11 @@
     "release": "npm run build && changeset publish"
   },
   "peerDependencies": {
-    "react": ">=19",
-    "react-dom": ">=19",
     "@builder.io/sdk-react": ">=5.0.0",
     "@radix-ui/react-dialog": ">=1.1.0",
-    "@radix-ui/react-label": ">=2.1.0"
+    "@radix-ui/react-label": ">=2.1.0",
+    "react": ">=19",
+    "react-dom": ">=19"
   },
   "peerDependenciesMeta": {
     "@builder.io/sdk-react": {
@@ -67,10 +69,13 @@
   },
   "devDependencies": {
     "@builder.io/sdk-react": "^5.2.2",
-    "@radix-ui/react-dialog": "^1.1.6",
-    "@radix-ui/react-label": "^2.1.2",
     "@changesets/cli": "^2.27.10",
     "@eslint/js": "^9.17.0",
+    "@radix-ui/react-dialog": "^1.1.6",
+    "@radix-ui/react-label": "^2.1.2",
+    "@storybook/addon-a11y": "10.4.2",
+    "@storybook/addon-docs": "10.4.2",
+    "@storybook/react-vite": "10.4.2",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@types/react": "^19.0.0",
@@ -85,6 +90,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "rolldown": "^1.0.3",
+    "storybook": "10.4.2",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.0",
     "vitest": "^2.1.8"
