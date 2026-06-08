@@ -1,5 +1,11 @@
 # @jasonyangcis/core-ui
 
+## 0.6.0
+
+### Minor Changes
+
+- 7f1fda8: Add `AnnouncementBar` headless primitive with `AnnouncementBar.builder.ts` for Builder.io registration. Renders a `data-slot="announcement-bar"` root (div or anchor when `href` is set), glyph slots on both sides of the message, and `data-linked="true"` on the anchor variant.
+
 ## 0.5.0
 
 ### Minor Changes
