@@ -1,0 +1,19 @@
+button[data-variant] {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  background: #18181b;
+  color: #fafafa;
+}
+button[data-variant='secondary'] { background: #f4f4f5; color: #18181b; }
+button[data-variant='destructive'] { background: #dc2626; color: #fafafa; }
+button[data-variant='outline'] { background: transparent; border-color: #d4d4d8; color: #18181b; }
+button[data-variant='ghost'] { background: transparent; color: #18181b; }
+button[data-variant='link'] { background: transparent; color: #2563eb; text-decoration: underline; }
+button[data-size='sm'] { padding: 0.35rem 0.7rem; font-size: 0.8rem; }
+button[data-size='lg'] { padding: 0.65rem 1.4rem; font-size: 1rem; }
+button[data-size='icon'] { padding: 0.5rem; width: 2.25rem; height: 2.25rem; }

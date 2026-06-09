@@ -25,7 +25,16 @@ const EXPECTED_PRESENT = ['data-variant']
 // '@radix-ui/' is the import specifier pulled in by Dialog and Label; it must
 // not appear in a Button-only bundle either.
 // 'announcement-bar-glyph' is the data-slot value unique to AnnouncementBar.
-const EXPECTED_ABSENT = ['toggle-square', 'data-slot', '@radix-ui/', 'announcement-bar-glyph']
+const EXPECTED_ABSENT = [
+  'toggle-square',
+  'data-slot',
+  '@radix-ui/',
+  'announcement-bar-glyph',
+  // Unique strings from new marketing components — must not leak into a Button-only bundle
+  'list-tree.svg',   // FaqList.builder.ts image URL sentinel
+  'screen.svg',      // HeroCentered.builder.ts image URL sentinel
+  'screen-wide.svg', // HeroSplit.builder.ts image URL sentinel
+]
 
 const files = await readdir(ASSETS_DIR)
 const jsFiles = files.filter((f) => f.endsWith('.js'))

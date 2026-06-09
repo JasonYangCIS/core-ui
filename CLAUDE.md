@@ -12,12 +12,13 @@ Every component lives in its own directory under `src/components/`:
 
 ```
 components/MyComponent/
-  index.ts                 # Barrel: named re-exports of the component and its types
-  MyComponent.tsx          # Implementation; re-exports types from the .types file at the bottom
-  MyComponent.types.ts     # Interfaces and prop unions only — no runtime code
-  MyComponent.test.tsx     # Vitest + Testing Library
-  MyComponent.stories.tsx  # Storybook stories — see Dev surfaces below
-  MyComponent.builder.ts   # `RegisteredComponent` config — omit if not Builder-registered
+  index.ts                  # Barrel: named re-exports of the component and its types
+  MyComponent.tsx           # Implementation; re-exports types from the .types file at the bottom
+  MyComponent.types.ts      # Interfaces and prop unions only — no runtime code
+  MyComponent.test.tsx      # Vitest + Testing Library
+  MyComponent.stories.tsx   # Storybook stories — ALWAYS required, see Dev surfaces below
+  MyComponent.stories.css   # Demo styles for the Storybook canvas — ALWAYS required alongside stories
+  MyComponent.builder.ts    # `RegisteredComponent` config — omit if not Builder-registered
 ```
 
 - **Types live in `MyComponent.types.ts`.** Implementation imports them with `import type` (so the file is fully elided at runtime under `verbatimModuleSyntax`), and re-exports them so consumers resolve them through the barrel.
@@ -39,7 +40,13 @@ Consumers depend on dead-code elimination dropping unused components. Three rule
 
 **Storybook** (`npm run storybook`, build with `build-storybook`) is the canonical way to see components in a browser. It does not ship in the published package (`files: ["dist"]`) and develops against `src/` (not `dist/`) so edits hot-reload. Config lives in `.storybook/`; stories are colocated as `MyComponent.stories.tsx` and import the library by its public name (`@jasonyangcis/core-ui`, aliased to `src/index.ts` in both `.storybook/main.ts`'s `viteFinal` and the `paths` map in `tsconfig.json`). The `@storybook/addon-a11y` panel is the meaningful signal for a headless library — it tests the ARIA you ship. Add a `tags: ['autodocs']` story per new component.
 
-Because the library ships no CSS, `.storybook/preview.css` supplies demo styles keyed off the `data-*` attributes — this is the consumer styling pattern, deliberately kept out of the components.
+**`MyComponent.stories.tsx` is mandatory for every component — new or updated.** Checklist:
+1. Import from `@jasonyangcis/core-ui` (the aliased barrel), not a relative path.
+2. Set `tags: ['autodocs']` on the meta object.
+3. Export a `Default` story plus stories for each meaningful variant/prop combination and conditional rendering case.
+4. Create `<Name>.stories.css` alongside the stories file with demo styles keyed off the component's `data-slot` attributes, and `import './<Name>.stories.css'` at the top of `<Name>.stories.tsx`. The library ships no CSS — without these styles the canvas renders blank. Do **not** add component styles to `.storybook/preview.css`; that file is intentionally empty so each component's canvas styles stay scoped.
+
+Because the library ships no CSS, each `*.stories.css` supplies demo styles keyed off `data-*` attributes — this is the consumer styling pattern, deliberately kept out of the components.
 
 **Stories must not leak into `dist/`.** Rolldown won't bundle them (its inputs are explicit), but `tsconfig.build.json` emits `.d.ts` for everything under `src/`, so `**/*.stories.ts(x)` is in that file's `exclude` list alongside tests. Keep it there.
 

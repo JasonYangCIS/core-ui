@@ -1,0 +1,52 @@
+[data-slot="hero-centered"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 4rem 1rem;
+  text-align: center;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+[data-slot="hero-centered-eyebrow"] {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #71717a;
+}
+[data-slot="hero-centered-eyebrow-rule"] {
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: #a1a1aa;
+}
+[data-slot="hero-centered-heading"] {
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-transform: uppercase;
+  margin: 0;
+}
+[data-slot="hero-centered-heading-accent"] { color: #2563eb; }
+[data-slot="hero-centered-body"] {
+  max-width: 36rem;
+  font-size: 1.125rem;
+  color: #52525b;
+  line-height: 1.6;
+}
+a[data-slot="hero-centered-cta"] {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 2rem;
+  background: #18181b;
+  color: #fafafa;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
