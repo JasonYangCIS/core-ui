@@ -12,12 +12,13 @@ Every component lives in its own directory under `src/components/`:
 
 ```
 components/MyComponent/
-  index.ts                 # Barrel: named re-exports of the component and its types
-  MyComponent.tsx          # Implementation; re-exports types from the .types file at the bottom
-  MyComponent.types.ts     # Interfaces and prop unions only — no runtime code
-  MyComponent.test.tsx     # Vitest + Testing Library
-  MyComponent.stories.tsx  # Storybook stories — ALWAYS required, see Dev surfaces below
-  MyComponent.builder.ts   # `RegisteredComponent` config — omit if not Builder-registered
+  index.ts                  # Barrel: named re-exports of the component and its types
+  MyComponent.tsx           # Implementation; re-exports types from the .types file at the bottom
+  MyComponent.types.ts      # Interfaces and prop unions only — no runtime code
+  MyComponent.test.tsx      # Vitest + Testing Library
+  MyComponent.stories.tsx   # Storybook stories — ALWAYS required, see Dev surfaces below
+  MyComponent.stories.css   # Demo styles for the Storybook canvas — ALWAYS required alongside stories
+  MyComponent.builder.ts    # `RegisteredComponent` config — omit if not Builder-registered
 ```
 
 - **Types live in `MyComponent.types.ts`.** Implementation imports them with `import type` (so the file is fully elided at runtime under `verbatimModuleSyntax`), and re-exports them so consumers resolve them through the barrel.
