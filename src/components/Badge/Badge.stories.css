@@ -1,0 +1,15 @@
+span[data-variant] {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 0.15rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: #18181b;
+  color: #fafafa;
+}
+span[data-variant='secondary'] { background: #f4f4f5; color: #18181b; }
+span[data-variant='destructive'] { background: #dc2626; }
+span[data-variant='outline'] { background: transparent; border: 1px solid #d4d4d8; color: #18181b; }
+span[data-variant='success'] { background: #16a34a; }

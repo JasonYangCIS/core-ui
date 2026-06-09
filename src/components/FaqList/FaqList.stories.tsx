@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { FaqList } from '@jasonyangcis/core-ui'
 import type { FaqItem } from '@jasonyangcis/core-ui'
+import './FaqList.stories.css'
 
 const SAMPLE_ITEMS: FaqItem[] = [
   {

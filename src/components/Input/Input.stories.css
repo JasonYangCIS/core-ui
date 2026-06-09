@@ -1,0 +1,13 @@
+input {
+  display: block;
+  width: 100%;
+  max-width: 20rem;
+  border: 1px solid #d4d4d8;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.875rem;
+}
+input[data-state='error'] { border-color: #dc2626; outline-color: #dc2626; }
+input[data-state='success'] { border-color: #16a34a; outline-color: #16a34a; }
+input[data-state='warning'] { border-color: #d97706; outline-color: #d97706; }

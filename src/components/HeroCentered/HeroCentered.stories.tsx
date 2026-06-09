@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { HeroCentered } from '@jasonyangcis/core-ui'
+import './HeroCentered.stories.css'
 
 const meta = {
   title: 'Marketing/HeroCentered',

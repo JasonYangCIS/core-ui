@@ -43,9 +43,9 @@ Consumers depend on dead-code elimination dropping unused components. Three rule
 1. Import from `@jasonyangcis/core-ui` (the aliased barrel), not a relative path.
 2. Set `tags: ['autodocs']` on the meta object.
 3. Export a `Default` story plus stories for each meaningful variant/prop combination and conditional rendering case.
-4. Add demo styles for the component's `data-slot` attributes to `.storybook/preview.css`. The library ships no CSS — without preview styles the Storybook canvas is blank and useless.
+4. Create `<Name>.stories.css` alongside the stories file with demo styles keyed off the component's `data-slot` attributes, and `import './<Name>.stories.css'` at the top of `<Name>.stories.tsx`. The library ships no CSS — without these styles the canvas renders blank. Do **not** add component styles to `.storybook/preview.css`; that file is intentionally empty so each component's canvas styles stay scoped.
 
-Because the library ships no CSS, `.storybook/preview.css` supplies demo styles keyed off the `data-*` attributes — this is the consumer styling pattern, deliberately kept out of the components.
+Because the library ships no CSS, each `*.stories.css` supplies demo styles keyed off `data-*` attributes — this is the consumer styling pattern, deliberately kept out of the components.
 
 **Stories must not leak into `dist/`.** Rolldown won't bundle them (its inputs are explicit), but `tsconfig.build.json` emits `.d.ts` for everything under `src/`, so `**/*.stories.ts(x)` is in that file's `exclude` list alongside tests. Keep it there.
 

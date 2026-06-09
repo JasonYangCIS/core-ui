@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { HeroSplit } from '@jasonyangcis/core-ui'
+import './HeroSplit.stories.css'
 
 const BASE_ARGS = {
   eyebrow: 'FIELD REPORT / XENOSPHERE',
