@@ -34,6 +34,7 @@ const EXPECTED_ABSENT = [
   'list-tree.svg',   // FaqList.builder.ts image URL sentinel
   'screen.svg',      // HeroCentered.builder.ts image URL sentinel
   'screen-wide.svg', // HeroSplit.builder.ts image URL sentinel
+  'list-icon-icon', // ListIcon data-slot value sentinel
 ]
 
 const files = await readdir(ASSETS_DIR)

@@ -1,0 +1,46 @@
+[data-slot="list-icon"] {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  max-width: 1000px;
+}
+[data-slot="list-icon-items"] {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 24px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+[data-slot="list-icon-item"] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 220px;
+  flex: 1 1 180px;
+}
+[data-slot="list-icon-icon"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background-color: rgb(187, 221, 230);
+  color: rgb(5, 28, 44);
+}
+[data-slot="list-icon-icon"] svg {
+  width: 48px;
+  height: 48px;
+}
+[data-slot="list-icon-label"] {
+  margin: 0;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  line-height: 24px;
+  color: rgb(5, 28, 44);
+  text-align: center;
+  text-transform: uppercase;
+}
