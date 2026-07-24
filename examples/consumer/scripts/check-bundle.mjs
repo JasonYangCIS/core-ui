@@ -34,6 +34,22 @@ const EXPECTED_ABSENT = [
   'list-tree.svg',   // FaqList.builder.ts image URL sentinel
   'screen.svg',      // HeroCentered.builder.ts image URL sentinel
   'screen-wide.svg', // HeroSplit.builder.ts image URL sentinel
+  'blog-article-header',
+  'blog-card-link',
+  'blog-grid-item',
+  'blog-filter-link',
+  'blog-pagination-status',
+  'blog-rich-text',
+  'blog-image-caption',
+  'blog-pull-quote',
+  'blog-callout-title',
+  'blog-code-block',
+  'blog-table-wrapper',
+  'blog-divider',
+  'blog-author-bio',
+  'blog-references-list',
+  'blog-related-posts',
+  'blog-cta-actions',
 ]
 
 const files = await readdir(ASSETS_DIR)
