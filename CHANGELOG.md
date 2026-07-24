@@ -1,5 +1,15 @@
 # @jasonyangcis/core-ui
 
+## 0.9.0
+
+### Minor Changes
+
+- 83fb747: Add the headless blog editorial component set and the opt-in `@jasonyangcis/core-ui/builder` registration factory API.
+
+### Patch Changes
+
+- 83fb747: Fix BlogGrid rendering in React applications.
+
 ## 0.8.0
 
 ### Minor Changes
