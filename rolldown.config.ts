@@ -4,7 +4,7 @@ import { defineConfig } from 'rolldown'
 const builderEntries = globSync('src/components/*/*.builder.ts')
 
 export default defineConfig({
-  input: ['src/index.ts', ...builderEntries],
+  input: ['src/index.ts', 'src/builder.ts', ...builderEntries],
   output: {
     dir: 'dist',
     format: 'esm',
