@@ -1,5 +1,11 @@
 # @jasonyangcis/core-ui
 
+## 0.8.0
+
+### Minor Changes
+
+- 6ae64c9: Add the headless blog editorial component set and the opt-in `@jasonyangcis/core-ui/builder` registration factory API.
+
 ## 0.7.0
 
 ### Minor Changes
