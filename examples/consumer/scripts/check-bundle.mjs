@@ -50,6 +50,7 @@ const EXPECTED_ABSENT = [
   'blog-references-list',
   'blog-related-posts',
   'blog-cta-actions',
+  'list-icon-mark',
 ]
 
 const files = await readdir(ASSETS_DIR)

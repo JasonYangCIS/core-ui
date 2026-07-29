@@ -20,6 +20,12 @@ export { HeroCentered } from './components/HeroCentered/index.js'
 export type { HeroCenteredProps } from './components/HeroCentered/index.js'
 export { HeroSplit } from './components/HeroSplit/index.js'
 export type { HeroSplitProps } from './components/HeroSplit/index.js'
+export { ListIcon } from './components/ListIcon/index.js'
+export type {
+  ListIconItem,
+  ListIconName,
+  ListIconProps,
+} from './components/ListIcon/index.js'
 export {
   Dialog,
   DialogTrigger,

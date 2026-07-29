@@ -1,0 +1,61 @@
+[data-slot="list-icon"] {
+  max-width: 1440px;
+  width: 100%;
+  padding: 0 40px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+[data-slot="list-icon-items"] {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin: 0 -12px;
+  padding: 0;
+  list-style: none;
+}
+
+[data-slot="list-icon-item"] {
+  display: flex;
+  width: 25%;
+  max-width: 300px;
+  margin-bottom: 32px;
+  padding: 0 12px;
+}
+
+[data-slot="list-icon-content"] {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+}
+
+[data-slot="list-icon-mark"] {
+  display: flex;
+  justify-content: center;
+}
+
+[data-slot="list-icon-mark"] svg {
+  width: 96px;
+  height: 96px;
+  padding: 22px;
+  border-radius: 50%;
+  background: rgb(187, 221, 230);
+  color: rgb(5, 28, 44);
+}
+
+[data-slot="list-icon-label"] {
+  margin: 16px auto 0;
+  color: rgb(5, 28, 44);
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 2.88px;
+  line-height: 24px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+@media (max-width: 767px) {
+  [data-slot="list-icon"] { padding: 0 20px; }
+  [data-slot="list-icon-item"] { width: 50%; }
+}

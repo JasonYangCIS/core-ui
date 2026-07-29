@@ -57,6 +57,7 @@
     "@builder.io/sdk-react": ">=5.0.0",
     "@radix-ui/react-dialog": ">=1.1.0",
     "@radix-ui/react-label": ">=2.1.0",
+    "lucide-react": ">=0.469.0",
     "react": ">=19",
     "react-dom": ">=19"
   },
@@ -68,6 +69,9 @@
       "optional": true
     },
     "@radix-ui/react-label": {
+      "optional": true
+    },
+    "lucide-react": {
       "optional": true
     }
   },
@@ -90,6 +94,7 @@
     "eslint-plugin-react-hooks": "^5.1.0",
     "globals": "^15.14.0",
     "jsdom": "^25.0.1",
+    "lucide-react": "^0.469.0",
     "prettier": "^3.4.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

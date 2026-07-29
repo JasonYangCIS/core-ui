@@ -18,6 +18,7 @@ export default defineConfig({
     /^react-dom($|\/)/,
     /^@builder\.io\//,
     /^@radix-ui\//,
+    /^lucide-react$/,
   ],
   jsx: 'react',
   platform: 'neutral',
