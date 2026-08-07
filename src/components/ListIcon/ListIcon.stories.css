@@ -1,0 +1,39 @@
+[data-slot='list-icon-items'] {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+[data-slot='list-icon-item'] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 220px;
+  text-align: center;
+}
+
+[data-slot='list-icon-icon'] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: #dff1f4;
+  color: #1a2740;
+}
+
+[data-slot='list-icon-label'] {
+  margin: 0;
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1a2740;
+}
