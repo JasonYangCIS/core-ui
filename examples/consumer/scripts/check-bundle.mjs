@@ -50,6 +50,8 @@ const EXPECTED_ABSENT = [
   'blog-references-list',
   'blog-related-posts',
   'blog-cta-actions',
+  'list-icon-item',       // ListIcon data-slot sentinel
+  'dynamicIconImports',   // lucide-react dynamic icon loader pulled in only by ListIcon
 ]
 
 const files = await readdir(ASSETS_DIR)
