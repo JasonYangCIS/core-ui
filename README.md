@@ -48,14 +48,14 @@ Use `asChild` to render props onto your own element:
 
 - **Primitives:** `Button`, `Badge`, `Card`, `Input`, `Label`, `Dialog` (+ parts)
 - **Marketing:** `AnnouncementBar`, `FaqList`, `HeroCentered`, `HeroSplit`
-- **Blog listing:** `BlogCard`, `BlogGrid`, `BlogFilters`, `BlogPagination`, `BlogRelatedPosts`
-- **Blog article:** `BlogArticleHeader`, `BlogRichText`, `BlogImageCaption`, `BlogPullQuote`, `BlogCallout`, `BlogCodeBlock`, `BlogTable`, `BlogDivider`, `BlogAuthorBio`, `BlogReferences`, `BlogCta`
+- **Blog layout:** `BlogArticleHeader`, `BlogCard`, `BlogGrid`, `BlogFilters`, `BlogPagination`
+- **Blog editorial blocks** (have Builder factories): `BlogRichText`, `BlogImageCaption`, `BlogPullQuote`, `BlogCallout`, `BlogCodeBlock`, `BlogTable`, `BlogDivider`, `BlogAuthorBio`, `BlogReferences`, `BlogRelatedPosts`, `BlogCta`
 
 `Button` takes `variant` (`default | destructive | outline | secondary | ghost | link`), `size` (`default | sm | lg | icon`), and `asChild`. Prop types are exported from the main barrel.
 
 ## Builder.io
 
-Builder configs are not in the main barrel. The `/builder` entry point exposes factories for the 11 **blog article** blocks only:
+Builder configs are not in the main barrel. The `/builder` entry point exposes factories for the 11 **blog editorial blocks** only:
 
 ```ts
 import { createBlogEditorialBuilderConfigs } from '@jasonyangcis/core-ui/builder'
