@@ -65,7 +65,7 @@ const blogComponents = createBlogEditorialBuilderConfigs({ all: { models: ['blog
 
 Each of those blocks also has its own factory (e.g. `createBlogCalloutBuilderConfig`). Options: `name`, `component`, `models`, `metadata`, `meta`, `additionalInputs`, `inputOverrides`.
 
-`Button`, `AnnouncementBar`, `FaqList`, `HeroCentered`, and `HeroSplit` have static configs only, imported by deep path, e.g. `@jasonyangcis/core-ui/components/Button/Button.builder`. Blog listing blocks (`BlogCard`, `BlogGrid`, etc.), `Badge`, `Card`, `Input`, `Label`, and `Dialog` have no Builder config.
+`Button`, `AnnouncementBar`, `FaqList`, `HeroCentered`, and `HeroSplit` have static configs only, imported by deep path, e.g. `@jasonyangcis/core-ui/components/Button/Button.builder`. `BlogArticleHeader`, `BlogCard`, `BlogGrid`, `BlogFilters`, `BlogPagination`, `Badge`, `Card`, `Input`, `Label`, and `Dialog` have no Builder config.
 
 ## Architecture
 
