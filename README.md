@@ -55,7 +55,7 @@ Use `asChild` to render props onto your own element:
 
 ## Builder.io
 
-Builder configs are not in the main barrel. Import them from the `/builder` entry point:
+Builder configs are not in the main barrel. The `/builder` entry point exposes factories for the 11 **blog article** blocks only:
 
 ```ts
 import { createBlogEditorialBuilderConfigs } from '@jasonyangcis/core-ui/builder'
@@ -63,7 +63,9 @@ import { createBlogEditorialBuilderConfigs } from '@jasonyangcis/core-ui/builder
 const blogComponents = createBlogEditorialBuilderConfigs({ all: { models: ['blog-post'] } })
 ```
 
-Each blog block also has its own factory (e.g. `createBlogCalloutBuilderConfig`). Options: `name`, `component`, `models`, `metadata`, `meta`, `additionalInputs`, `inputOverrides`. `Button` config: `@jasonyangcis/core-ui/components/Button/Button.builder`.
+Each of those blocks also has its own factory (e.g. `createBlogCalloutBuilderConfig`). Options: `name`, `component`, `models`, `metadata`, `meta`, `additionalInputs`, `inputOverrides`.
+
+`Button`, `AnnouncementBar`, `FaqList`, `HeroCentered`, and `HeroSplit` have static configs only, imported by deep path, e.g. `@jasonyangcis/core-ui/components/Button/Button.builder`. Blog listing blocks (`BlogCard`, `BlogGrid`, etc.), `Badge`, `Card`, `Input`, `Label`, and `Dialog` have no Builder config.
 
 ## Architecture
 
