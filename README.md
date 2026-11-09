@@ -46,53 +46,24 @@ Use `asChild` to render props onto your own element:
 
 ## Components
 
-**Primitives**
+- **Primitives:** `Button`, `Badge`, `Card`, `Input`, `Label`, `Dialog` (+ parts)
+- **Marketing:** `AnnouncementBar`, `FaqList`, `HeroCentered`, `HeroSplit`
+- **Blog listing:** `BlogCard`, `BlogGrid`, `BlogFilters`, `BlogPagination`, `BlogRelatedPosts`
+- **Blog article:** `BlogArticleHeader`, `BlogRichText`, `BlogImageCaption`, `BlogPullQuote`, `BlogCallout`, `BlogCodeBlock`, `BlogTable`, `BlogDivider`, `BlogAuthorBio`, `BlogReferences`, `BlogCta`
 
-| Component | Notes |
-|---|---|
-| `Button` | `variant` (`default \| destructive \| outline \| secondary \| ghost \| link`), `size` (`default \| sm \| lg \| icon`), `asChild`, native `<button>` attrs |
-| `Badge` | `variant` surfaced as `data-variant` |
-| `Card` | Generic bordered container |
-| `Input` / `Label` | Form text input and accessible label |
-| `Dialog` | Radix-based: `Dialog`, `DialogTrigger`, `DialogClose`, `DialogPortal`, `DialogOverlay`, `DialogContent`, `DialogTitle`, `DialogDescription` |
-
-**Marketing**
-
-`AnnouncementBar`, `FaqList`, `HeroCentered`, `HeroSplit`
-
-**Blog listing**
-
-`BlogCard`, `BlogGrid`, `BlogFilters`, `BlogPagination`, `BlogRelatedPosts`
-
-**Blog article / editorial blocks**
-
-`BlogArticleHeader`, `BlogRichText`, `BlogImageCaption`, `BlogPullQuote`, `BlogCallout`, `BlogCodeBlock`, `BlogTable`, `BlogDivider`, `BlogAuthorBio`, `BlogReferences`, `BlogCta`
-
-Prop types for every component are exported from the main barrel (for example `BlogCardProps`, `BlogCalloutVariant`).
+`Button` takes `variant` (`default | destructive | outline | secondary | ghost | link`), `size` (`default | sm | lg | icon`), and `asChild`. Prop types are exported from the main barrel.
 
 ## Builder.io
 
-Builder registration configs are **not** in the main barrel. Import them from the `@jasonyangcis/core-ui/builder` entry point (or a deep path) so non-Builder bundles stay clean.
+Builder configs are not in the main barrel. Import them from the `/builder` entry point:
 
 ```ts
 import { createBlogEditorialBuilderConfigs } from '@jasonyangcis/core-ui/builder'
 
-// Registers all 11 blog editorial blocks
-const blogComponents = createBlogEditorialBuilderConfigs({
-  all: { models: ['blog-post'] },
-  blogCta: { inputOverrides: { label: { required: true } } },
-})
+const blogComponents = createBlogEditorialBuilderConfigs({ all: { models: ['blog-post'] } })
 ```
 
-- Each blog block has its own factory, such as `createBlogCalloutBuilderConfig(options)`.
-- Factory options (`BuilderConfigFactoryOptions`): `name`, `component`, `models`, `metadata`, `meta`, `additionalInputs`, `inputOverrides`.
-- `inputOverrides` throws on unknown input names, and `additionalInputs` throws on duplicates.
-- `createBlogEditorialBuilderConfigs` accepts `all` (shared options) plus per-block overrides that are merged on top.
-- `Button` still exposes a static config via a deep path:
-
-```ts
-import { buttonConfig } from '@jasonyangcis/core-ui/components/Button/Button.builder'
-```
+Each blog block also has its own factory (e.g. `createBlogCalloutBuilderConfig`). Options: `name`, `component`, `models`, `metadata`, `meta`, `additionalInputs`, `inputOverrides`. `Button` config: `@jasonyangcis/core-ui/components/Button/Button.builder`.
 
 ## Architecture
 
