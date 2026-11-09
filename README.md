@@ -46,17 +46,26 @@ Use `asChild` to render props onto your own element:
 
 ## Components
 
-| Component | Props |
-|---|---|
-| `Button` | `variant` (`default \| destructive \| outline \| secondary \| ghost \| link`), `size` (`default \| sm \| lg \| icon`), `asChild`, native `<button>` attrs |
+- **Primitives:** `Button`, `Badge`, `Card`, `Input`, `Label`, `Dialog` (+ parts)
+- **Marketing:** `AnnouncementBar`, `FaqList`, `HeroCentered`, `HeroSplit`
+- **Blog layout:** `BlogArticleHeader`, `BlogCard`, `BlogGrid`, `BlogFilters`, `BlogPagination`
+- **Blog editorial blocks** (have Builder factories): `BlogRichText`, `BlogImageCaption`, `BlogPullQuote`, `BlogCallout`, `BlogCodeBlock`, `BlogTable`, `BlogDivider`, `BlogAuthorBio`, `BlogReferences`, `BlogRelatedPosts`, `BlogCta`
+
+`Button` takes `variant` (`default | destructive | outline | secondary | ghost | link`), `size` (`default | sm | lg | icon`), and `asChild`. Prop types are exported from the main barrel.
 
 ## Builder.io
 
-Builder registration configs are **not** in the main barrel — import via deep path to avoid polluting non-Builder bundles:
+Builder configs are not in the main barrel. The `/builder` entry point exposes factories for the 11 **blog editorial blocks** only:
 
 ```ts
-import { buttonConfig } from '@jasonyangcis/core-ui/components/Button/Button.builder'
+import { createBlogEditorialBuilderConfigs } from '@jasonyangcis/core-ui/builder'
+
+const blogComponents = createBlogEditorialBuilderConfigs({ all: { models: ['blog-post'] } })
 ```
+
+Each of those blocks also has its own factory (e.g. `createBlogCalloutBuilderConfig`). Options: `name`, `component`, `models`, `metadata`, `meta`, `additionalInputs`, `inputOverrides`.
+
+`Button`, `AnnouncementBar`, `FaqList`, `HeroCentered`, and `HeroSplit` have static configs only, imported by deep path, e.g. `@jasonyangcis/core-ui/components/Button/Button.builder`. `BlogArticleHeader`, `BlogCard`, `BlogGrid`, `BlogFilters`, `BlogPagination`, `Badge`, `Card`, `Input`, `Label`, and `Dialog` have no Builder config.
 
 ## Architecture
 
