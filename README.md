@@ -21,7 +21,7 @@ npm install @jasonyangcis/core-ui
 //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
 ```
 
-Peer deps: `react >=19`, `react-dom >=19`. `@builder.io/sdk-react >=5` is optional — only needed for Builder registrations.
+Peer deps: `react >=19`, `react-dom >=19`. `@builder.io/sdk-react >=5` is optional — only needed for Builder registrations. `@radix-ui/react-dialog >=1.1` and `@radix-ui/react-label >=2.1` are also optional — only needed if you use `Dialog` or `Label`.
 
 ## Usage
 
@@ -94,9 +94,10 @@ Key rules:
 |---|---|
 | `build` | Rolldown bundle + `tsc` declarations |
 | `dev` | Rolldown watch mode |
-| `typecheck` / `lint` / `format` | tsc / ESLint / Prettier |
+| `typecheck` / `lint` | tsc / ESLint |
+| `format` / `format:check` | Prettier (write / check only) |
 | `test` / `test:watch` | Vitest |
-| `storybook` | Storybook dev server |
+| `storybook` / `build-storybook` | Storybook dev server / static build |
 | `verify:consumer` | Build + consumer fixture + treeshake check |
 | `changeset` / `version` / `release` | Changesets release flow |
 
